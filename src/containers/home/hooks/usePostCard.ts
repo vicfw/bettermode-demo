@@ -7,6 +7,7 @@ export const usePostCard = (fields: Fields[]) => {
   const pathname = useLocation().pathname;
   const navigate = useNavigate();
 
+  // check if current page is home page
   const isHomePage = useMemo(() => pathname === "/", [pathname]);
 
   // find related description field
@@ -20,6 +21,7 @@ export const usePostCard = (fields: Fields[]) => {
     [descriptionString]
   );
 
+  // post ref for scrolling purpose
   const postRef = useRef<HTMLDivElement | null>(null);
 
   const [isMoreContentShown, setIsMoreContentShown] = useState(false);
@@ -33,6 +35,8 @@ export const usePostCard = (fields: Fields[]) => {
     e.preventDefault();
 
     setIsMoreContentShown((prev) => !prev);
+
+    // Scrolls the post content into view smoothly when the "show more" content is toggled.
     if (isMoreContentShown) {
       postRef.current?.scrollIntoView({
         behavior: "smooth",
@@ -41,6 +45,9 @@ export const usePostCard = (fields: Fields[]) => {
     }
   };
 
+  /**
+   * Navigates back to the previous page in the browser history.
+   */
   const handleBack = useCallback(() => {
     navigate(-1);
   }, []);

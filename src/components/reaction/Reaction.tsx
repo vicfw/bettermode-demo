@@ -15,6 +15,7 @@ const Reaction = ({
   id,
 }: ReactionProps) => {
   const { on } = useReaction(id);
+
   return (
     <div className="flex items-center justify-between">
       <div className="text-content-subdued flex space-s-1 flex-[2]  text-neutral-500 gap-1 text-sm items-center">

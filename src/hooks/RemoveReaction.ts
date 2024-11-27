@@ -9,6 +9,10 @@ export const useRemoveReactionMutation = ({ postId }: { postId: string }) => {
       postId,
       reaction: "heart",
     },
+    /**
+     * Provides an optimistic response for the `removeReaction` mutation, which sets the status to "SUCCESS" before the actual mutation completes.
+     * This allows for a smoother user experience by immediately updating the UI to reflect the removal of the reaction, without waiting for the server response.
+     */
     optimisticResponse: {
       __typename: "Mutation",
       removeReaction: {

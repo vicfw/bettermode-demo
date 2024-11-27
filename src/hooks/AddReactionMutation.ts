@@ -12,6 +12,7 @@ export const useAddReactionMutation = ({ postId }: { postId: string }) => {
         overrideSingleChoiceReactions: true,
       },
     },
+    // Provides an optimistic response for the `addReaction` mutation, which sets the `status` to `"SUCCESS"` before the actual mutation completes. This allows for a smoother user experience by immediately updating the UI to reflect the reaction being added, before the server-side update is complete.
     optimisticResponse: {
       __typename: "Mutation",
       addReaction: {
@@ -63,6 +64,7 @@ export const useAddReactionMutation = ({ postId }: { postId: string }) => {
     },
   });
 
+  // Handles the addition of a reaction to a post. This function is called when the user interacts with the UI to add a reaction to a post.
   const handleAddReaction = () => {
     addReaction();
   };
