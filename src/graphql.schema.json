@@ -1,0 +1,182 @@
+{
+  "__schema": {
+    "queryType": {
+      "name": "Query"
+    },
+    "mutationType": null,
+    "subscriptionType": null,
+    "types": [
+      {
+        "kind": "OBJECT",
+        "name": "Query",
+        "fields": [
+          {
+            "name": "posts",
+            "args": [
+              {
+                "name": "after",
+                "type": { "kind": "SCALAR", "name": "String" }
+              },
+              {
+                "name": "before",
+                "type": { "kind": "SCALAR", "name": "String" }
+              },
+              {
+                "name": "excludePins",
+                "type": { "kind": "SCALAR", "name": "Boolean" }
+              },
+              {
+                "name": "filterBy",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "PostListFilterByInput"
+                  }
+                }
+              },
+              { "name": "limit", "type": { "kind": "SCALAR", "name": "Int" } },
+              { "name": "offset", "type": { "kind": "SCALAR", "name": "Int" } },
+              {
+                "name": "orderBy",
+                "type": { "kind": "ENUM", "name": "PostListOrderByEnum" }
+              },
+              {
+                "name": "orderByString",
+                "type": { "kind": "SCALAR", "name": "String" }
+              },
+              {
+                "name": "postTypeIds",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": { "kind": "SCALAR", "name": "String" }
+                }
+              },
+              {
+                "name": "reverse",
+                "type": { "kind": "SCALAR", "name": "Boolean" }
+              },
+              {
+                "name": "spaceIds",
+                "type": {
+                  "kind": "LIST",
+                  "ofType": { "kind": "ID", "name": "ID" }
+                }
+              },
+              {
+                "name": "query",
+                "type": { "kind": "SCALAR", "name": "String" }
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "PostConnection"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "PostConnection",
+        "fields": [
+          { "name": "totalCount", "type": { "kind": "SCALAR", "name": "Int" } },
+          {
+            "name": "pageInfo",
+            "type": { "kind": "OBJECT", "name": "PageInfo" }
+          },
+          {
+            "name": "nodes",
+            "type": {
+              "kind": "LIST",
+              "ofType": { "kind": "OBJECT", "name": "Post" }
+            }
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "PageInfo",
+        "fields": [
+          {
+            "name": "endCursor",
+            "type": { "kind": "SCALAR", "name": "String" }
+          },
+          {
+            "name": "hasNextPage",
+            "type": { "kind": "SCALAR", "name": "Boolean" }
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Post",
+        "fields": [
+          { "name": "id", "type": { "kind": "SCALAR", "name": "ID" } },
+          { "name": "slug", "type": { "kind": "SCALAR", "name": "String" } },
+          { "name": "title", "type": { "kind": "SCALAR", "name": "String" } },
+          {
+            "name": "description",
+            "type": { "kind": "SCALAR", "name": "String" }
+          },
+          {
+            "name": "createdAt",
+            "type": { "kind": "SCALAR", "name": "String" }
+          },
+          {
+            "name": "publishedAt",
+            "type": { "kind": "SCALAR", "name": "String" }
+          },
+          { "name": "ownerId", "type": { "kind": "SCALAR", "name": "ID" } },
+          {
+            "name": "repliesCount",
+            "type": { "kind": "SCALAR", "name": "Int" }
+          },
+          {
+            "name": "reactionsCount",
+            "type": { "kind": "SCALAR", "name": "Int" }
+          },
+          {
+            "name": "fields",
+            "type": {
+              "kind": "LIST",
+              "ofType": { "kind": "OBJECT", "name": "Field" }
+            }
+          },
+          {
+            "name": "mappingFields",
+            "type": {
+              "kind": "LIST",
+              "ofType": { "kind": "OBJECT", "name": "MappingField" }
+            }
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Field",
+        "fields": [
+          { "name": "key", "type": { "kind": "SCALAR", "name": "String" } },
+          { "name": "value", "type": { "kind": "SCALAR", "name": "String" } }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "MappingField",
+        "fields": [
+          { "name": "key", "type": { "kind": "SCALAR", "name": "String" } },
+          { "name": "type", "type": { "kind": "SCALAR", "name": "String" } },
+          { "name": "value", "type": { "kind": "SCALAR", "name": "String" } }
+        ]
+      },
+      {
+        "kind": "ENUM",
+        "name": "PostListOrderByEnum",
+        "enumValues": [
+          { "name": "createdAt" },
+          { "name": "publishedAt" },
+          { "name": "reactionsCount" }
+        ]
+      }
+    ]
+  }
+}
