@@ -1,50 +1,33 @@
 import {
   ApolloClient,
   ApolloProvider,
-  createHttpLink,
+  HttpLink,
   InMemoryCache,
 } from "@apollo/client";
-import { setContext } from "@apollo/client/link/context";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router";
-import "./index.css";
-import Home from "./pages/home/Home";
+import { BrowserRouter } from "react-router";
 import { API_URL, TOKEN } from "./constants";
-import SinglePost from "./pages/single-post/SinglePost";
-import FullHeightWrapper from "./components/FullHeightWrapper";
+import "./index.css";
+import RouteRenderer from "./routes/RouteRenderer";
+import { routes } from "./routes/routes";
 
-const httpLink = createHttpLink({
-  uri: API_URL, // Replace with your GraphQL API endpoint
-});
+const token = localStorage.getItem("token");
 
-// Set up the context to include the Bearer token
-const authLink = setContext((_, { headers }) => {
-  return {
+const client = new ApolloClient({
+  link: new HttpLink({
+    uri: API_URL,
+    credentials: "same-origin",
     headers: {
-      ...headers,
       authorization: `Bearer ${TOKEN}`,
     },
-  };
-});
-const client = new ApolloClient({
-  link: authLink.concat(httpLink), // Add the authLink before httpLink
+  }),
   cache: new InMemoryCache(),
 });
 
 createRoot(document.getElementById("root")!).render(
   <ApolloProvider client={client}>
     <BrowserRouter>
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path="/posts">
-          <Route path=":postId" element={<SinglePost />} />
-        </Route>
-
-        <Route
-          path="*"
-          element={<FullHeightWrapper text="404 - Not Found" />}
-        />
-      </Routes>
+      <RouteRenderer routes={routes} isAuthenticated={true} />
     </BrowserRouter>
   </ApolloProvider>
 );

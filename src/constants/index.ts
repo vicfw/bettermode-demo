@@ -2,6 +2,3 @@ export const API_URL = "https://api.bettermode.com";
 // hardcoded token for now
 export const TOKEN =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlRnOVVFVkdLODAiLCJuZXR3b3JrSWQiOiIzYVR6cVdLa1M4IiwibmV0d29ya0RvbWFpbiI6InNhYXNwbGV4LWowOGx0bnpiLmJldHRlcm1vZGUuaW8iLCJ0b2tlblR5cGUiOiJVU0VSIiwiZW50aXR5SWQiOm51bGwsInBlcm1pc3Npb25Db250ZXh0IjpudWxsLCJwZXJtaXNzaW9ucyI6bnVsbCwic2Vzc2lvbklkIjoieW5BWDdjVGRYejZqcHA0VUNaNGZoZjNCejVrak50Z1BsaTNaelJKZDdrRTRrMVZHRGMiLCJpYXQiOjE3MzI2MTM5MjIsImV4cCI6MTczNTIwNTkyMn0.XjXxysznGfB0968jZU8CjScUMNgEn551Cc9811e6_gM";
-// fallback image when image is not available
-export const FALLBACK_IMAGE =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGh5WFH8TOIfRKxUrIgJZoDCs1yvQ4hIcppw&s";
